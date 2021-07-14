@@ -24,13 +24,12 @@ public class Hash_003 {
 //	clothes의 모든 원소는 문자열로 이루어져 있습니다.
 //	모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '_' 로만 이루어져 있습니다.
 //	스파이는 하루에 최소 한 개의 의상은 입습니다.
-//	
-	
+
 	private String[][] example = {{"yellow_hat", "headgear"}, {"blue_sunglasses", "eyewear"}, {"green_turban", "headgear"}};
-	
+
 
 	public int solution() {
-        
+
 		String[][] clothes = example;
 		
         HashMap<String, Integer> cthMap = new HashMap<String, Integer>();
