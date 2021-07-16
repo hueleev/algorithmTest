@@ -1,5 +1,8 @@
-package JavaStudy;
+package javaStudy.mda02;
 
+/**
+ * 무거운 사과만 선택
+ */
 public class AppleHeavyWeightPredicate implements ApplePredicate{
 
     @Override

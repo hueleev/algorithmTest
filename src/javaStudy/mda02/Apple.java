@@ -1,9 +1,12 @@
-package JavaStudy;
+package javaStudy.mda02;
 
+/**
+ * »ç°ú
+ */
 public class Apple {
     public enum Color {
         RED,
-        BLUE
+        GREEN
     }
 
     Color color;
