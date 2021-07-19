@@ -28,6 +28,7 @@ public class MainMethod {
         System.out.println(filterApples(appleList, (Apple apple) -> Apple.Color.RED.equals(apple.getColor())));
         // compareTo
         appleList.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
+
         System.out.println(appleList.toString());
         // stream lambda
         List<Integer> lambdaTest = appleList.stream().filter(apple -> apple.getWeight() > 150).sorted(Comparator.comparing(Apple::getWeight)).map(Apple::getWeight).collect(toList());
