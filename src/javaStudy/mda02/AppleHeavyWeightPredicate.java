@@ -1,7 +1,7 @@
 package javaStudy.mda02;
 
 /**
- * ¹«°Å¿î »ç°ú¸¸ ¼±ÅÃ
+ * ë¬´ê²Œ Predicate
  */
 public class AppleHeavyWeightPredicate implements ApplePredicate{
 

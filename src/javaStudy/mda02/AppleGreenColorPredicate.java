@@ -1,7 +1,7 @@
 package javaStudy.mda02;
 
 /**
- * ÃÊ·Ï»ö »ç°ú¸¸ ¼±ÅÃ
+ * ì´ˆë¡ìƒ‰ ì‚¬ê³¼ Predicate
  */
 public class AppleGreenColorPredicate implements ApplePredicate{
     @Override

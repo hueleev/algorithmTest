@@ -8,67 +8,67 @@ import java.util.List;
 public class Array_001 {
 
 	/*
-	 * 001. K¹øÂ°¼ö
-	¹è¿­ arrayÀÇ i¹øÂ° ¼ýÀÚºÎÅÍ j¹øÂ° ¼ýÀÚ±îÁö ÀÚ¸£°í Á¤·ÄÇßÀ» ¶§, k¹øÂ°¿¡ ÀÖ´Â ¼ö¸¦ ±¸ÇÏ·Á ÇÕ´Ï´Ù.
+	 * 001. Kë²ˆì§¸ìˆ˜
+	ë°°ì—´ arrayì˜ ië²ˆì§¸ ìˆ«ìžë¶€í„° jë²ˆì§¸ ìˆ«ìžê¹Œì§€ ìžë¥´ê³  ì •ë ¬í–ˆì„ ë•Œ, kë²ˆì§¸ì— ìžˆëŠ” ìˆ˜ë¥¼ êµ¬í•˜ë ¤ í•©ë‹ˆë‹¤.
 
-	¿¹¸¦ µé¾î array°¡ [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3ÀÌ¶ó¸é
+	ì˜ˆë¥¼ ë“¤ì–´ arrayê°€ [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3ì´ë¼ë©´
 
-	arrayÀÇ 2¹øÂ°ºÎÅÍ 5¹øÂ°±îÁö ÀÚ¸£¸é [5, 2, 6, 3]ÀÔ´Ï´Ù.
-	1¿¡¼­ ³ª¿Â ¹è¿­À» Á¤·ÄÇÏ¸é [2, 3, 5, 6]ÀÔ´Ï´Ù.
-	2¿¡¼­ ³ª¿Â ¹è¿­ÀÇ 3¹øÂ° ¼ýÀÚ´Â 5ÀÔ´Ï´Ù.
-	¹è¿­ array, [i, j, k]¸¦ ¿ø¼Ò·Î °¡Áø 2Â÷¿ø ¹è¿­ commands°¡ ¸Å°³º¯¼ö·Î ÁÖ¾îÁú ¶§, commandsÀÇ ¸ðµç ¿ø¼Ò¿¡ ´ëÇØ ¾Õ¼­ ¼³¸íÇÑ ¿¬»êÀ» Àû¿ëÇßÀ» ¶§ ³ª¿Â °á°ú¸¦ ¹è¿­¿¡ ´ã¾Æ return ÇÏµµ·Ï solution ÇÔ¼ö¸¦ ÀÛ¼ºÇØÁÖ¼¼¿ä.
+	arrayì˜ 2ë²ˆì§¸ë¶€í„° 5ë²ˆì§¸ê¹Œì§€ ìžë¥´ë©´ [5, 2, 6, 3]ìž…ë‹ˆë‹¤.
+	1ì—ì„œ ë‚˜ì˜¨ ë°°ì—´ì„ ì •ë ¬í•˜ë©´ [2, 3, 5, 6]ìž…ë‹ˆë‹¤.
+	2ì—ì„œ ë‚˜ì˜¨ ë°°ì—´ì˜ 3ë²ˆì§¸ ìˆ«ìžëŠ” 5ìž…ë‹ˆë‹¤.
+	ë°°ì—´ array, [i, j, k]ë¥¼ ì›ì†Œë¡œ ê°€ì§„ 2ì°¨ì› ë°°ì—´ commandsê°€ ë§¤ê°œë³€ìˆ˜ë¡œ ì£¼ì–´ì§ˆ ë•Œ, commandsì˜ ëª¨ë“  ì›ì†Œì— ëŒ€í•´ ì•žì„œ ì„¤ëª…í•œ ì—°ì‚°ì„ ì ìš©í–ˆì„ ë•Œ ë‚˜ì˜¨ ê²°ê³¼ë¥¼ ë°°ì—´ì— ë‹´ì•„ return í•˜ë„ë¡ solution í•¨ìˆ˜ë¥¼ ìž‘ì„±í•´ì£¼ì„¸ìš”.
 
-	Á¦ÇÑ»çÇ×
-	arrayÀÇ ±æÀÌ´Â 1 ÀÌ»ó 100 ÀÌÇÏÀÔ´Ï´Ù.
-	arrayÀÇ °¢ ¿ø¼Ò´Â 1 ÀÌ»ó 100 ÀÌÇÏÀÔ´Ï´Ù.
-	commandsÀÇ ±æÀÌ´Â 1 ÀÌ»ó 50 ÀÌÇÏÀÔ´Ï´Ù.
-	commandsÀÇ °¢ ¿ø¼Ò´Â ±æÀÌ°¡ 3ÀÔ´Ï´Ù.
-	ÀÔÃâ·Â ¿¹
+	ì œí•œì‚¬í•­
+	arrayì˜ ê¸¸ì´ëŠ” 1 ì´ìƒ 100 ì´í•˜ìž…ë‹ˆë‹¤.
+	arrayì˜ ê° ì›ì†ŒëŠ” 1 ì´ìƒ 100 ì´í•˜ìž…ë‹ˆë‹¤.
+	commandsì˜ ê¸¸ì´ëŠ” 1 ì´ìƒ 50 ì´í•˜ìž…ë‹ˆë‹¤.
+	commandsì˜ ê° ì›ì†ŒëŠ” ê¸¸ì´ê°€ 3ìž…ë‹ˆë‹¤.
+	ìž…ì¶œë ¥ ì˜ˆ
 	array	commands	return
 	[1, 5, 2, 6, 3, 7, 4]	[[2, 5, 3], [4, 4, 1], [1, 7, 3]]	[5, 6, 3]
-	ÀÔÃâ·Â ¿¹ ¼³¸í
-	[1, 5, 2, 6, 3, 7, 4]¸¦ 2¹øÂ°ºÎÅÍ 5¹øÂ°±îÁö ÀÚ¸¥ ÈÄ Á¤·ÄÇÕ´Ï´Ù. [2, 3, 5, 6]ÀÇ ¼¼ ¹øÂ° ¼ýÀÚ´Â 5ÀÔ´Ï´Ù.
-	[1, 5, 2, 6, 3, 7, 4]¸¦ 4¹øÂ°ºÎÅÍ 4¹øÂ°±îÁö ÀÚ¸¥ ÈÄ Á¤·ÄÇÕ´Ï´Ù. [6]ÀÇ Ã¹ ¹øÂ° ¼ýÀÚ´Â 6ÀÔ´Ï´Ù.
-	[1, 5, 2, 6, 3, 7, 4]¸¦ 1¹øÂ°ºÎÅÍ 7¹øÂ°±îÁö ÀÚ¸¨´Ï´Ù. [1, 2, 3, 4, 5, 6, 7]ÀÇ ¼¼ ¹øÂ° ¼ýÀÚ´Â 3ÀÔ´Ï´Ù.*/
-	
+	ìž…ì¶œë ¥ ì˜ˆ ì„¤ëª…
+	[1, 5, 2, 6, 3, 7, 4]ë¥¼ 2ë²ˆì§¸ë¶€í„° 5ë²ˆì§¸ê¹Œì§€ ìžë¥¸ í›„ ì •ë ¬í•©ë‹ˆë‹¤. [2, 3, 5, 6]ì˜ ì„¸ ë²ˆì§¸ ìˆ«ìžëŠ” 5ìž…ë‹ˆë‹¤.
+	[1, 5, 2, 6, 3, 7, 4]ë¥¼ 4ë²ˆì§¸ë¶€í„° 4ë²ˆì§¸ê¹Œì§€ ìžë¥¸ í›„ ì •ë ¬í•©ë‹ˆë‹¤. [6]ì˜ ì²« ë²ˆì§¸ ìˆ«ìžëŠ” 6ìž…ë‹ˆë‹¤.
+	[1, 5, 2, 6, 3, 7, 4]ë¥¼ 1ë²ˆì§¸ë¶€í„° 7ë²ˆì§¸ê¹Œì§€ ìžë¦…ë‹ˆë‹¤. [1, 2, 3, 4, 5, 6, 7]ì˜ ì„¸ ë²ˆì§¸ ìˆ«ìžëŠ” 3ìž…ë‹ˆë‹¤.*/
+
 	private static int[] array = {1, 5, 2, 6, 3, 7, 4};
 	private static int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
-	
+
 	public static int[] solution() {
 		int[] answer = new int[commands.length];
 		int idx = 0;
-		
+
 		for (int[] command : commands) {
 			int startIdx = command[0] - 1;
 			int endIdx = command[1] - 1;;
 			int pickIdx = command[2] - 1;
 
 			List<Integer> answerList = new ArrayList<Integer>();
-			
+
 			for(int i=startIdx; i<=endIdx; i++) {
 				answerList.add(array[i]);
 			}
-			
+
 			Collections.sort(answerList);
 
 			answer[idx] = answerList.get(pickIdx);
 			idx ++;
 		}
-		
+
 		System.out.println(Arrays.toString(answer));
-		return answer;		 
+		return answer;
 	}
-	
+
 	public static int[] answer() {
 		int[] answer = new int[commands.length];
 
-        for(int i=0; i<commands.length; i++){
-            int[] temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
-            Arrays.sort(temp);
+		for(int i=0; i<commands.length; i++){
+			int[] temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+			Arrays.sort(temp);
 
-            answer[i] = temp[commands[i][2]-1];
-        }
+			answer[i] = temp[commands[i][2]-1];
+		}
 
-        return answer;
+		return answer;
 	}
 }

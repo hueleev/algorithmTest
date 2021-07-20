@@ -28,7 +28,7 @@ public class PredicateTest {
 
         Predicate<Apple> greenApplePredicate = (apple) -> Apple.Color.GREEN.equals(apple.getColor());
         System.out.println(filter(appleList, greenApplePredicate));
-        Predicate<Apple> notGreenApple = greenApplePredicate.negate();  // ±âÁ¸ predicate ¹ÝÀü
+        Predicate<Apple> notGreenApple = greenApplePredicate.negate();  // ê¸°ì¡´ predicate ë°˜ì „
         System.out.println(filter(appleList, notGreenApple));
 
         Predicate<Apple> greenAndHeavyApple = greenApplePredicate.and(apple -> apple.getWeight() > 150);

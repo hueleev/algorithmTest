@@ -21,7 +21,7 @@ public class MainMethod {
             }
         }
 
-        // ÀÍ¸í Å¬·¡½º·Î ¿ä¸® Á¤·Ä
+        // ìµëª… í´ë˜ìŠ¤ë¡œ ìš”ë¦¬ ì •ë ¬
         Collections.sort(lowCaloricDishes, new Comparator<Dish_before>() {
             @Override
             public int compare(Dish_before o1, Dish_before o2) {
@@ -29,7 +29,7 @@ public class MainMethod {
             }
         });
 
-        // Á¤·ÄµÈ ¸®½ºÆ® Ã³¸®ÇÏ¿© ÀÌ¸§ ¼±ÅÃ
+        // ì •ë ¬ëœ ë¦¬ìŠ¤íŠ¸ ì²˜ë¦¬í•˜ì—¬ ì´ë¦„ ì„ íƒ
         List<String> lowCaloricDishesName = new ArrayList<>();
         for (Dish_before dish : lowCaloricDishes) {
             lowCaloricDishesName.add(dish.getName());
@@ -40,10 +40,10 @@ public class MainMethod {
 
         List<String> lowCaloricDishesName2 =
                 dishList.stream()
-                .filter(d -> d.getCalories() < 400)
-                .sorted(Comparator.comparing(Dish_before::getCalories))
-                .map(Dish_before::getName)
-                .collect(toList());
+                        .filter(d -> d.getCalories() < 400)
+                        .sorted(Comparator.comparing(Dish_before::getCalories))
+                        .map(Dish_before::getName)
+                        .collect(toList());
 
         System.out.println(lowCaloricDishesName2);
     }

@@ -1,7 +1,7 @@
 package javaStudy.mda02;
 
 /**
- * »ç°ú
+ * ì‚¬ê³¼ í´ë˜ìŠ¤
  */
 public class Apple {
     public enum Color {

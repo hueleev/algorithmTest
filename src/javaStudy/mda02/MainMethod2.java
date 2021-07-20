@@ -15,23 +15,23 @@ public class MainMethod2 {
         );
 
         /**
-         * ¹«°Ô¼ø Á¤·Ä (List sort ¹× Comparator È°¿ë
+         * ë¬´ê²Œìˆœ ì •ë ¬ (List sort ë° Comparator í™œìš©
          * [Apple{color=GREEN, weight=100}, Apple{color=RED, weight=180}, Apple{color=GREEN, weight=350}, Apple{color=RED, weight=400}]
          */
         appleList.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
-        
+
         /**
-         * Runnable lambda Àü
-         */        
+         * Runnable lambda ì „
+         */
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("Hello world");
             }
         });
-        
+
         /**
-         * Runnable lambda ÈÄ
+         * Runnable lambda í›„
          */
         Thread t_lambda = new Thread(() -> System.out.println("Hello World"));
     }

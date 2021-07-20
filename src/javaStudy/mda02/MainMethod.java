@@ -15,16 +15,16 @@ public class MainMethod {
                 new Apple(Apple.Color.GREEN, 350),
                 new Apple(Apple.Color.RED, 400)
         );
-        // µ¿ÀÛ ÆÄ¶ó¹ÌÅÍÈ­
+        // ë™ìž‘ íŒŒë¼ë¯¸í„°í™”
         System.out.println(filterApples(appleList, new AppleHeavyWeightPredicate()).toString());
-        // ÀÍ¸í Å¬·¡½º
+        // ìµëª… í´ëž˜ìŠ¤
         System.out.println(filterApples(appleList, new ApplePredicate() {
             @Override
             public boolean test(Apple apple) {
                 return Apple.Color.GREEN.equals(apple.getColor());
             }
         }).toString());
-        // ¶÷´Ù½Ä
+        // ëžŒë‹¤ì‹
         System.out.println(filterApples(appleList, (Apple apple) -> Apple.Color.RED.equals(apple.getColor())));
         // compareTo
         appleList.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
@@ -40,7 +40,7 @@ public class MainMethod {
 
 
     /**
-     * »ç°ú ÇÊÅÍ
+     * ì‚¬ê³¼ í•„í„°
      *
      * @param inventory
      * @param p

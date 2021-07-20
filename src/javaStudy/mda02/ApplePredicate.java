@@ -1,7 +1,7 @@
 package javaStudy.mda02;
 
 /**
- * ÇÁ·¹µğÄÉÀÌÆ® : Âü/°ÅÁşÀ» ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+ * í”„ë ˆë””ì¼€ì´íŠ¸ : ì°¸/ê±°ì§“ì„ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
  */
 public interface ApplePredicate {
     boolean test(Apple apple);

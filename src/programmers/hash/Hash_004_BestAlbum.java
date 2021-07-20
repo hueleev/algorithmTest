@@ -3,36 +3,36 @@ package programmers.hash;
 import java.util.*;
 
 /*
-		½ºÆ®¸®¹Ö »çÀÌÆ®¿¡¼­ Àå¸£ º°·Î °¡Àå ¸¹ÀÌ Àç»ýµÈ ³ë·¡¸¦ µÎ °³¾¿ ¸ð¾Æ º£½ºÆ® ¾Ù¹üÀ» Ãâ½ÃÇÏ·Á ÇÕ´Ï´Ù. ³ë·¡´Â °íÀ¯ ¹øÈ£·Î ±¸ºÐÇÏ¸ç, ³ë·¡¸¦ ¼ö·ÏÇÏ´Â ±âÁØÀº ´ÙÀ½°ú °°½À´Ï´Ù.
+		ìŠ¤íŠ¸ë¦¬ë° ì‚¬ì´íŠ¸ì—ì„œ ìž¥ë¥´ ë³„ë¡œ ê°€ìž¥ ë§Žì´ ìž¬ìƒëœ ë…¸ëž˜ë¥¼ ë‘ ê°œì”© ëª¨ì•„ ë² ìŠ¤íŠ¸ ì•¨ë²”ì„ ì¶œì‹œí•˜ë ¤ í•©ë‹ˆë‹¤. ë…¸ëž˜ëŠ” ê³ ìœ  ë²ˆí˜¸ë¡œ êµ¬ë¶„í•˜ë©°, ë…¸ëž˜ë¥¼ ìˆ˜ë¡í•˜ëŠ” ê¸°ì¤€ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
 
-		¼ÓÇÑ ³ë·¡°¡ ¸¹ÀÌ Àç»ýµÈ Àå¸£¸¦ ¸ÕÀú ¼ö·ÏÇÕ´Ï´Ù.
-		Àå¸£ ³»¿¡¼­ ¸¹ÀÌ Àç»ýµÈ ³ë·¡¸¦ ¸ÕÀú ¼ö·ÏÇÕ´Ï´Ù.
-		Àå¸£ ³»¿¡¼­ Àç»ý È½¼ö°¡ °°Àº ³ë·¡ Áß¿¡¼­´Â °íÀ¯ ¹øÈ£°¡ ³·Àº ³ë·¡¸¦ ¸ÕÀú ¼ö·ÏÇÕ´Ï´Ù.
-		³ë·¡ÀÇ Àå¸£¸¦ ³ªÅ¸³»´Â ¹®ÀÚ¿­ ¹è¿­ genres¿Í ³ë·¡º° Àç»ý È½¼ö¸¦ ³ªÅ¸³»´Â Á¤¼ö ¹è¿­ plays°¡ ÁÖ¾îÁú ¶§, º£½ºÆ® ¾Ù¹ü¿¡ µé¾î°¥ ³ë·¡ÀÇ °íÀ¯ ¹øÈ£¸¦ ¼ø¼­´ë·Î return ÇÏµµ·Ï solution ÇÔ¼ö¸¦ ¿Ï¼ºÇÏ¼¼¿ä.
+		ì†í•œ ë…¸ëž˜ê°€ ë§Žì´ ìž¬ìƒëœ ìž¥ë¥´ë¥¼ ë¨¼ì € ìˆ˜ë¡í•©ë‹ˆë‹¤.
+		ìž¥ë¥´ ë‚´ì—ì„œ ë§Žì´ ìž¬ìƒëœ ë…¸ëž˜ë¥¼ ë¨¼ì € ìˆ˜ë¡í•©ë‹ˆë‹¤.
+		ìž¥ë¥´ ë‚´ì—ì„œ ìž¬ìƒ íšŸìˆ˜ê°€ ê°™ì€ ë…¸ëž˜ ì¤‘ì—ì„œëŠ” ê³ ìœ  ë²ˆí˜¸ê°€ ë‚®ì€ ë…¸ëž˜ë¥¼ ë¨¼ì € ìˆ˜ë¡í•©ë‹ˆë‹¤.
+		ë…¸ëž˜ì˜ ìž¥ë¥´ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë¬¸ìžì—´ ë°°ì—´ genresì™€ ë…¸ëž˜ë³„ ìž¬ìƒ íšŸìˆ˜ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì •ìˆ˜ ë°°ì—´ playsê°€ ì£¼ì–´ì§ˆ ë•Œ, ë² ìŠ¤íŠ¸ ì•¨ë²”ì— ë“¤ì–´ê°ˆ ë…¸ëž˜ì˜ ê³ ìœ  ë²ˆí˜¸ë¥¼ ìˆœì„œëŒ€ë¡œ return í•˜ë„ë¡ solution í•¨ìˆ˜ë¥¼ ì™„ì„±í•˜ì„¸ìš”.
 
-		Á¦ÇÑ»çÇ×
-		genres[i]´Â °íÀ¯¹øÈ£°¡ iÀÎ ³ë·¡ÀÇ Àå¸£ÀÔ´Ï´Ù.
-		plays[i]´Â °íÀ¯¹øÈ£°¡ iÀÎ ³ë·¡°¡ Àç»ýµÈ È½¼öÀÔ´Ï´Ù.
-		genres¿Í playsÀÇ ±æÀÌ´Â °°À¸¸ç, ÀÌ´Â 1 ÀÌ»ó 10,000 ÀÌÇÏÀÔ´Ï´Ù.
-		Àå¸£ Á¾·ù´Â 100°³ ¹Ì¸¸ÀÔ´Ï´Ù.
-		Àå¸£¿¡ ¼ÓÇÑ °îÀÌ ÇÏ³ª¶ó¸é, ÇÏ³ªÀÇ °î¸¸ ¼±ÅÃÇÕ´Ï´Ù.
-		¸ðµç Àå¸£´Â Àç»ýµÈ È½¼ö°¡ ´Ù¸¨´Ï´Ù.
-		ÀÔÃâ·Â ¿¹
+		ì œí•œì‚¬í•­
+		genres[i]ëŠ” ê³ ìœ ë²ˆí˜¸ê°€ iì¸ ë…¸ëž˜ì˜ ìž¥ë¥´ìž…ë‹ˆë‹¤.
+		plays[i]ëŠ” ê³ ìœ ë²ˆí˜¸ê°€ iì¸ ë…¸ëž˜ê°€ ìž¬ìƒëœ íšŸìˆ˜ìž…ë‹ˆë‹¤.
+		genresì™€ playsì˜ ê¸¸ì´ëŠ” ê°™ìœ¼ë©°, ì´ëŠ” 1 ì´ìƒ 10,000 ì´í•˜ìž…ë‹ˆë‹¤.
+		ìž¥ë¥´ ì¢…ë¥˜ëŠ” 100ê°œ ë¯¸ë§Œìž…ë‹ˆë‹¤.
+		ìž¥ë¥´ì— ì†í•œ ê³¡ì´ í•˜ë‚˜ë¼ë©´, í•˜ë‚˜ì˜ ê³¡ë§Œ ì„ íƒí•©ë‹ˆë‹¤.
+		ëª¨ë“  ìž¥ë¥´ëŠ” ìž¬ìƒëœ íšŸìˆ˜ê°€ ë‹¤ë¦…ë‹ˆë‹¤.
+		ìž…ì¶œë ¥ ì˜ˆ
 		genres	plays	return
 		["classic", "pop", "classic", "classic", "pop"]	[500, 600, 150, 800, 2500]	[4, 1, 3, 0]
-		ÀÔÃâ·Â ¿¹ ¼³¸í
-		classic Àå¸£´Â 1,450È¸ Àç»ýµÇ¾úÀ¸¸ç, classic ³ë·¡´Â ´ÙÀ½°ú °°½À´Ï´Ù.
+		ìž…ì¶œë ¥ ì˜ˆ ì„¤ëª…
+		classic ìž¥ë¥´ëŠ” 1,450íšŒ ìž¬ìƒë˜ì—ˆìœ¼ë©°, classic ë…¸ëž˜ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
 
-		°íÀ¯ ¹øÈ£ 3: 800È¸ Àç»ý
-		°íÀ¯ ¹øÈ£ 0: 500È¸ Àç»ý
-		°íÀ¯ ¹øÈ£ 2: 150È¸ Àç»ý
-		pop Àå¸£´Â 3,100È¸ Àç»ýµÇ¾úÀ¸¸ç, pop ³ë·¡´Â ´ÙÀ½°ú °°½À´Ï´Ù.
+		ê³ ìœ  ë²ˆí˜¸ 3: 800íšŒ ìž¬ìƒ
+		ê³ ìœ  ë²ˆí˜¸ 0: 500íšŒ ìž¬ìƒ
+		ê³ ìœ  ë²ˆí˜¸ 2: 150íšŒ ìž¬ìƒ
+		pop ìž¥ë¥´ëŠ” 3,100íšŒ ìž¬ìƒë˜ì—ˆìœ¼ë©°, pop ë…¸ëž˜ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
 
-		°íÀ¯ ¹øÈ£ 4: 2,500È¸ Àç»ý
-		°íÀ¯ ¹øÈ£ 1: 600È¸ Àç»ý
-		µû¶ó¼­ pop Àå¸£ÀÇ [4, 1]¹ø ³ë·¡¸¦ ¸ÕÀú, classic Àå¸£ÀÇ [3, 0]¹ø ³ë·¡¸¦ ±×´ÙÀ½¿¡ ¼ö·ÏÇÕ´Ï´Ù.
+		ê³ ìœ  ë²ˆí˜¸ 4: 2,500íšŒ ìž¬ìƒ
+		ê³ ìœ  ë²ˆí˜¸ 1: 600íšŒ ìž¬ìƒ
+		ë”°ë¼ì„œ pop ìž¥ë¥´ì˜ [4, 1]ë²ˆ ë…¸ëž˜ë¥¼ ë¨¼ì €, classic ìž¥ë¥´ì˜ [3, 0]ë²ˆ ë…¸ëž˜ë¥¼ ê·¸ë‹¤ìŒì— ìˆ˜ë¡í•©ë‹ˆë‹¤.
 
-		¡Ø °øÁö - 2019³â 2¿ù 28ÀÏ Å×½ºÆ®ÄÉÀÌ½º°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.
+		â€» ê³µì§€ - 2019ë…„ 2ì›” 28ì¼ í…ŒìŠ¤íŠ¸ì¼€ì´ìŠ¤ê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.
 */
 
 public class Hash_004_BestAlbum  {
@@ -41,7 +41,7 @@ public class Hash_004_BestAlbum  {
     private static int[] plays = {500, 600, 150, 800, 2500};
 
     public static int[] solution() {
-        // Àå¸£º° total Àç»ý¼ö map
+        // ìž¥ë¥´ë³„ total ìž¬ìƒìˆ˜ map
         Map<String, Integer> playMap = new HashMap<>();
         for (int i = 0; i < genres.length; i++) {
             String genre = genres[i];
@@ -54,20 +54,20 @@ public class Hash_004_BestAlbum  {
             }
         }
 
-        // Àç»ý¼ö ¼ø Á¤·Ä
+        // ìž¬ìƒìˆ˜ ìˆœ ì •ë ¬
         List<String> keySetList = new ArrayList<>(playMap.keySet());
         keySetList.sort((o1, o2) -> (playMap.get(o2).compareTo(playMap.get(o1))));
 
         List<Integer> answerList = new ArrayList<>();
         for (String genre : keySetList) {
-            Map<Integer, Integer> genreMap = new HashMap<>(); // Àå¸£ index, Àç»ý¼ö ¸Ê
+            Map<Integer, Integer> genreMap = new HashMap<>(); // ìž¥ë¥´ index, ìž¬ìƒìˆ˜ ë§µ
             for (int i=0; i<genres.length; i++) {
                 if (genre.equals(genres[i])) {
                     genreMap.put(i, plays[i]);
                 }
             }
 
-            // Àå¸£ ³» Àç»ý¼ö ¼ø Á¤·Ä
+            // ìž¥ë¥´ ë‚´ ìž¬ìƒìˆ˜ ìˆœ ì •ë ¬
             List<Integer> idxList = new ArrayList<>(genreMap.keySet());
             idxList.sort((o1, o2) -> (genreMap.get(o2).compareTo(genreMap.get(o1))));
             int limitChk = 0;

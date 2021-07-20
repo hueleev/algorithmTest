@@ -2,34 +2,34 @@ package programmers.hash;
 
 public class Hash_002 {
 
-	
-//	002. ÀüÈ­ ¹øÈ£ ¸ñ·Ï
-//	
-//	ÀüÈ­¹øÈ£ºÎ¿¡ ÀûÈù ÀüÈ­¹øÈ£ Áß, ÇÑ ¹øÈ£°¡ ´Ù¸¥ ¹øÈ£ÀÇ Á¢µÎ¾îÀÎ °æ¿ì°¡ ÀÖ´ÂÁö È®ÀÎÇÏ·Á ÇÕ´Ï´Ù.
-//	ÀüÈ­¹øÈ£°¡ ´ÙÀ½°ú °°À» °æ¿ì, ±¸Á¶´ë ÀüÈ­¹øÈ£´Â ¿µ¼®ÀÌÀÇ ÀüÈ­¹øÈ£ÀÇ Á¢µÎ»çÀÔ´Ï´Ù.
+
+//	002. ì „í™” ë²ˆí˜¸ ëª©ë¡
 //
-//	±¸Á¶´ë : 119
-//	¹ÚÁØ¿µ : 97 674 223
-//	Áö¿µ¼® : 11 9552 4421
-//	ÀüÈ­¹øÈ£ºÎ¿¡ ÀûÈù ÀüÈ­¹øÈ£¸¦ ´ãÀº ¹è¿­ phone_book ÀÌ solution ÇÔ¼öÀÇ ¸Å°³º¯¼ö·Î ÁÖ¾îÁú ¶§, ¾î¶² ¹øÈ£°¡ ´Ù¸¥ ¹øÈ£ÀÇ Á¢µÎ¾îÀÎ °æ¿ì°¡ ÀÖÀ¸¸é false¸¦ ±×·¸Áö ¾ÊÀ¸¸é true¸¦ return ÇÏµµ·Ï solution ÇÔ¼ö¸¦ ÀÛ¼ºÇØÁÖ¼¼¿ä.
+//	ì „í™”ë²ˆí˜¸ë¶€ì— ì ížŒ ì „í™”ë²ˆí˜¸ ì¤‘, í•œ ë²ˆí˜¸ê°€ ë‹¤ë¥¸ ë²ˆí˜¸ì˜ ì ‘ë‘ì–´ì¸ ê²½ìš°ê°€ ìžˆëŠ”ì§€ í™•ì¸í•˜ë ¤ í•©ë‹ˆë‹¤.
+//	ì „í™”ë²ˆí˜¸ê°€ ë‹¤ìŒê³¼ ê°™ì„ ê²½ìš°, êµ¬ì¡°ëŒ€ ì „í™”ë²ˆí˜¸ëŠ” ì˜ì„ì´ì˜ ì „í™”ë²ˆí˜¸ì˜ ì ‘ë‘ì‚¬ìž…ë‹ˆë‹¤.
 //
-//	Á¦ÇÑ »çÇ×
-//	phone_bookÀÇ ±æÀÌ´Â 1 ÀÌ»ó 1,000,000 ÀÌÇÏÀÔ´Ï´Ù.
-//	°¢ ÀüÈ­¹øÈ£ÀÇ ±æÀÌ´Â 1 ÀÌ»ó 20 ÀÌÇÏÀÔ´Ï´Ù.
-	
-	private static String[] example = {"119", "97674223", "1195524421"};
+//	êµ¬ì¡°ëŒ€ : 119
+//	ë°•ì¤€ì˜ : 97 674 223
+//	ì§€ì˜ì„ : 11 9552 4421
+//	ì „í™”ë²ˆí˜¸ë¶€ì— ì ížŒ ì „í™”ë²ˆí˜¸ë¥¼ ë‹´ì€ ë°°ì—´ phone_book ì´ solution í•¨ìˆ˜ì˜ ë§¤ê°œë³€ìˆ˜ë¡œ ì£¼ì–´ì§ˆ ë•Œ, ì–´ë–¤ ë²ˆí˜¸ê°€ ë‹¤ë¥¸ ë²ˆí˜¸ì˜ ì ‘ë‘ì–´ì¸ ê²½ìš°ê°€ ìžˆìœ¼ë©´ falseë¥¼ ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ trueë¥¼ return í•˜ë„ë¡ solution í•¨ìˆ˜ë¥¼ ìž‘ì„±í•´ì£¼ì„¸ìš”.
+//
+//	ì œí•œ ì‚¬í•­
+//	phone_bookì˜ ê¸¸ì´ëŠ” 1 ì´ìƒ 1,000,000 ì´í•˜ìž…ë‹ˆë‹¤.
+//	ê° ì „í™”ë²ˆí˜¸ì˜ ê¸¸ì´ëŠ” 1 ì´ìƒ 20 ì´í•˜ìž…ë‹ˆë‹¤.
+
+    private static String[] example = {"119", "97674223", "1195524421"};
 
     public static boolean solution() {
-    	String[] phone_book = example;
-    	
-    	String minNum = phone_book[0];
-         
+        String[] phone_book = example;
+
+        String minNum = phone_book[0];
+
         for (String phoneNum : phone_book) {
             if (phoneNum.length() < minNum.length()) {
                 minNum = phoneNum;
             }
         }
-        
+
         for (String phoneNum : phone_book) {
             if (phoneNum != minNum) {
                 String cmpNum = phoneNum.substring(0, minNum.length());
@@ -38,7 +38,7 @@ public class Hash_002 {
                 }
             }
         }
-        
+
         return true;
     }
 }
