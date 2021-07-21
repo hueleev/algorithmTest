@@ -1,11 +1,7 @@
 package algorithmTest;
 
-import programmers.hash.Hash_004_BestAlbum;
-
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 /*
         002. 프린터
@@ -40,28 +36,61 @@ import java.util.Stack;
 */
 
 public class test {
-    private static int[] priorities = {2, 1, 3, 2};
-    private static int location = 2;
+    private static int[] priorities = {1, 1, 9, 1, 1, 1};
+    private static int location = 0;
 
     public static void main(String[] args) {
-        // 나중에 프린트할 인덱스를 담은 Queue (선입선출)
-        Queue<Integer> lastList = new LinkedList<>();
-        // 먼저 프린트할 인덱스를 담은 Stack (후입선출)
-        Stack<Integer> firstList = new Stack<>();
-        
+        // 프린트 인덱스 담을 Queue
+        Queue<Integer> printList = new LinkedList<>();
+        for (int i = 0; i < priorities.length; i++) {
+            printList.add(i);
+        }
+
+        int answer = 0; // 프린트 횟수 카운트
+        boolean peekAnswer = false; // 첫번째 for문 내에서 정답이 추출됐는지 확인
+
         for (int i = 0; i<priorities.length-1; i++) {
-            int target = priorities[i];
+            int target = priorities[i]; // 비교할 중요도 선택
+            int peekIdx = -1; // 프린트 미뤄질 경우 넣을 idx
+
+            // 후 순위에 target보다 중요도 큰 게 존재하는지 확인
             for (int j = i+1; j<priorities.length; j++) {
                 if (target < priorities[j]) {
-                    lastList.offer(i); // 인덱스 넣어주기
-                    priorities[i] = -1;
+                    peekIdx = printList.peek(); // 존재할 경우 idx 선택하여
+                    printList.add(peekIdx); // 맨 뒷순서로 넣어주기
+                    printList.poll(); // 프린트 목록에서 빼기
                     break;
                 }
-                if (priorities[i] != -1) {
-                    firstList.push(i);
+            }
+
+            // 미뤄지지 않았을 경우,
+            if (peekIdx == -1) {
+                peekIdx = printList.peek(); // 프린트할 idx 선택
+                answer ++;  // 프린트 횟수 카운트 +1
+                printList.poll(); // 프린트 목록에서 빼기
+
+                // 뽑힌 프린트 idx과 정답과 일치하는지 확인
+                if (peekIdx == location) {
+                    peekAnswer = true;  // 정답 idx 뽑힘
+                    break; // for문 중단
                 }
             }
         }
 
+        // 정답 idx가 뽑히지 않았을 경우
+        if (!peekAnswer) {
+            int size = (int) printList.stream().count();
+            // 순서대로 프린트 하기
+            for (int i=0; i<size; i++) {
+                int peekIdx = printList.peek(); // 프린트할 idx 선택
+                printList.poll(); // 프린트 목록에서 빼기
+                answer++; // 프린트 카운트 +1
+                if (peekIdx == location) { // 정답과 일치하는 idx인지 확인
+                    break; // 일치할 경우 break;
+                }
+            }
+        }
+
+        System.out.println(answer);
     }
 }
