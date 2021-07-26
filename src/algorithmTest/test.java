@@ -41,56 +41,59 @@ public class test {
 
     public static void main(String[] args) {
         // 프린트 인덱스 담을 Queue
-        Queue<Integer> printList = new LinkedList<>();
+        Queue<Print> printList = new LinkedList<>();
         for (int i = 0; i < priorities.length; i++) {
-            printList.add(i);
+            printList.offer(new Print(i, priorities[i]));
         }
 
-        int answer = 0; // 프린트 횟수 카운트
-        boolean peekAnswer = false; // 첫번째 for문 내에서 정답이 추출됐는지 확인
+        int answer = 0;
+        while(!printList.isEmpty()) {
+            Print print = printList.poll();
 
-        for (int i = 0; i<priorities.length-1; i++) {
-            int target = priorities[i]; // 비교할 중요도 선택
-            int peekIdx = -1; // 프린트 미뤄질 경우 넣을 idx
+            boolean printFlag = true;
 
-            // 후 순위에 target보다 중요도 큰 게 존재하는지 확인
-            for (int j = i+1; j<priorities.length; j++) {
-                if (target < priorities[j]) {
-                    peekIdx = printList.peek(); // 존재할 경우 idx 선택하여
-                    printList.add(peekIdx); // 맨 뒷순서로 넣어주기
-                    printList.poll(); // 프린트 목록에서 빼기
+            for (Print p : printList) {
+                if (print.getPriority() < p.getPriority()) {
+                    printList.offer(print);
+                    printFlag = false;
                     break;
                 }
             }
 
-            // 미뤄지지 않았을 경우,
-            if (peekIdx == -1) {
-                peekIdx = printList.peek(); // 프린트할 idx 선택
-                answer ++;  // 프린트 횟수 카운트 +1
-                printList.poll(); // 프린트 목록에서 빼기
-
-                // 뽑힌 프린트 idx과 정답과 일치하는지 확인
-                if (peekIdx == location) {
-                    peekAnswer = true;  // 정답 idx 뽑힘
-                    break; // for문 중단
-                }
-            }
-        }
-
-        // 정답 idx가 뽑히지 않았을 경우
-        if (!peekAnswer) {
-            int size = (int) printList.stream().count();
-            // 순서대로 프린트 하기
-            for (int i=0; i<size; i++) {
-                int peekIdx = printList.peek(); // 프린트할 idx 선택
-                printList.poll(); // 프린트 목록에서 빼기
-                answer++; // 프린트 카운트 +1
-                if (peekIdx == location) { // 정답과 일치하는 idx인지 확인
-                    break; // 일치할 경우 break;
+            if (printFlag) {
+                answer++;
+                if (print.getIdx() == location) {
+                    break;
                 }
             }
         }
 
         System.out.println(answer);
+    }
+}
+
+class Print {
+    private int idx;
+    private int priority;
+
+    public Print(int idx, int priority) {
+        this.idx = idx;
+        this.priority = priority;
+    }
+
+    public int getIdx() {
+        return idx;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

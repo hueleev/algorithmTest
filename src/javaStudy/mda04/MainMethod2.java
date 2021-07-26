@@ -1,7 +1,11 @@
 package javaStudy.mda04;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class MainMethod2 {
 
@@ -18,6 +22,17 @@ public class MainMethod2 {
     );
 
     public static void main(String[] args) {
+
+        List<String> threeHighCaloricDishnames =
+                menu.stream()
+                .filter(dish -> dish.getCalories() > 300)
+                .map(Dish::getName)
+                .limit(3)
+                .collect(toList());
+
+        Iterator<Dish> names = menu.iterator();
+        System.out.println(names.next());
+        System.out.println(names.next());
 
     }
 }
