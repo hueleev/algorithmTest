@@ -1,4 +1,4 @@
-package javaStudy.mda04;
+package javaStudy;
 
 public class Dish {
 
