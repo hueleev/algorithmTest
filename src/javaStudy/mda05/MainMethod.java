@@ -50,11 +50,11 @@ public class MainMethod {
                 new Dish("beef", false, 700, Dish.Type.MEAT));
 
         // takeWhile
-        List<Dish> slicedMenu1
+        /*List<Dish> slicedMenu1
                 = specialMenu.stream().takeWhile(dish -> dish.getCalories() < 400).collect(toList());
         // dropWhile
         List<Dish> slicedMenu2
-                = specialMenu.stream().dropWhile(dish -> dish.getCalories() < 400).collect(toList());
+                = specialMenu.stream().dropWhile(dish -> dish.getCalories() < 400).collect(toList());*/
 
         // limit
         List<Dish> limitDishes
@@ -137,8 +137,8 @@ public class MainMethod {
         Stream<String> homeValueStream
                 = homeValue == null ? Stream.empty() : Stream.of(homeValue);
 
-        Stream<String> homeValueStream2
-                = Stream.ofNullable(System.getProperty("home"));
+//        Stream<String> homeValueStream2
+//                = Stream.ofNullable(System.getProperty("home"));
 
         int[] numbers2 = {2, 3, 5, 7, 11, 13};
         int sum2 = Arrays.stream(numbers2).sum();
