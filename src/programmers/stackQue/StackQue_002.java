@@ -31,59 +31,56 @@ public class StackQue_002 {
 //	weight는 1 이상 10,000 이하입니다.
 //	truck_weights의 길이는 1 이상 10,000 이하입니다.
 //	모든 트럭의 무게는 1 이상 weight 이하입니다.
-	
-	private static int bridge_length = 2;
-	private static int weight = 10;
-	private static int[] truck_weights = {7, 4, 5, 6};
-	
-	public static int solution() {
-    	int answer = 0;
-    	
-    	int time = 0; // 시간
+
+    private static int bridge_length = 2;
+    private static int weight = 10;
+    private static int[] truck_weights = {7, 4, 5, 6};
+
+    public static int solution() {
+        int time = 0; // 시간
         int weightLeft = weight; // 남은 무게
         Truck truck = null;
-        
+
         Queue<Truck> outside = new LinkedList<Truck>();
         List<Truck> inside = new ArrayList<Truck>();
-        
+
         // 대기 트럭
-    	for (int truckWeight : truck_weights) {
-    		outside.add(new Truck(truckWeight, bridge_length));
-    	}
-    	
-    	
-    	// 모든 순간이 동시다발적으로 일어나야 한다.
-    	while(!(inside.isEmpty()&&outside.isEmpty())) {
-    		
-    		// 가장 먼저 들어간 트럭이 다 건넌 경우
-    		if (!inside.isEmpty() && inside.get(0).distance <=0) {
-    			weightLeft += inside.get(0).weight;
-    			inside.remove(0);
-    		}
-    		
-    		// 트럭이 새로 들어가는 경우
-    		if (!outside.isEmpty() && weightLeft - outside.peek().weight >= 0) {
-    			weightLeft -= outside.peek().weight;
-    			inside.add(outside.poll());
-    		}
-    		
-    		// 전체 거리 --;
-    		for (int i=0; i<inside.size(); i++) {
-    			inside.get(i).distance--;
-    		}
-    		
-    		time++;
-    	}
-    	
-        return answer;
+        for (int truckWeight : truck_weights) {
+            outside.add(new Truck(truckWeight, bridge_length));
+        }
+
+        // 모든 순간이 동시다발적으로 일어나야 한다.
+        while (!(inside.isEmpty() && outside.isEmpty())) {
+
+            time++;
+
+            // 가장 먼저 들어간 트럭이 다 건넌 경우
+            if (!inside.isEmpty() && inside.get(0).distance <= 0) {
+                weightLeft += inside.get(0).weight;
+                inside.remove(0);
+            }
+
+            // 트럭이 새로 들어가는 경우
+            if (!outside.isEmpty() && weightLeft - outside.peek().weight >= 0) {
+                weightLeft -= outside.peek().weight;
+                inside.add(outside.poll());
+            }
+
+            // 전체 거리 --;
+            for (int i = 0; i < inside.size(); i++) {
+                inside.get(i).distance--;
+            }
+        }
+
+        return time;
     }
-	
+
 }
 
 class Truck {
     int weight;
     int distance;
-    
+
     public Truck(int weight, int distance) {
         this.weight = weight;
         this.distance = distance;

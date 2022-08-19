@@ -1,15 +1,8 @@
 package programmers.heap;
 
-import java.util.Collections;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Heap_003_MultiQueue {
-    public static void main(String[] args) {
-        String[] ex1 = {"I 16","D 1"};
-        String[] ex2 = {"I 7","I 5","I -5","D -1"};
-        solution(ex1);
-        solution(ex2);
-    }
     public static int[] solution(String[] operations) {
         int[] answer = new int[2];
 
@@ -17,23 +10,25 @@ public class Heap_003_MultiQueue {
         PriorityQueue<Integer> minQueue = new PriorityQueue<>();
 
         for (String opr : operations) {
-            String[] sOpr = opr.split(" ");
-
-            switch (sOpr[0]) {
+            StringTokenizer st = new StringTokenizer(opr);
+            int num = 0;
+            switch (st.nextToken()) {
                 case "I" : // 삽입
-                    maxQueue.add(Integer.parseInt(sOpr[1]));
-                    minQueue.add(Integer.parseInt(sOpr[1]));
+                    num = Integer.parseInt(st.nextToken());
+                    maxQueue.add(num);
+                    minQueue.add(num);
                     break;
                 case "D":
-                    int removeQueue = 0;
-                    if (sOpr[1].equals("1")) {
-                        removeQueue = maxQueue.peek();
-                    } else {
-                        removeQueue = minQueue.peek();
+                    if (st.nextToken().equals("1") && maxQueue.size() != 0) {
+                        num = maxQueue.peek();
+                    } else if (minQueue.size() != 0){
+                        num = minQueue.peek();
                     }
 
-                    maxQueue.remove(removeQueue);
-                    minQueue.remove(removeQueue);
+                    if (num != 0) {
+                        maxQueue.remove(num);
+                        minQueue.remove(num);
+                    }
                     break;
                 default:
                     break;

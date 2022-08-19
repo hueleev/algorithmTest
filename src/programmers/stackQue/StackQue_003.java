@@ -37,25 +37,32 @@ public class StackQue_003 {
         		} else {
         			day.set(i, day.get(i)+1);
         		}
-        		
+
         		progresses[i] += speeds[i];
         	}
         }
-        
-        
+
+		System.out.println(day.toString());
+
+		// 배포 관련 work
         List<Work> works = new ArrayList<Work>();
         
         for (int i=0; i<day.size(); i++) {
         	if (works.size() == 0) {
+				// 첫번째 배포일에는 무조건 첫번째 작업이 배포됨.
         		works.add(new Work(day.get(i), 1));
         	}
 			else {
+				// 이전 배포소요기간 보다 다음 작업기간이 적으면
+				// 이전 배포소요기간 내에 작업이 완료되므로 같이 배포 (+1)
         		if (works.get(works.size()-1).workDay >= day.get(i)) {
             		works.get(works.size()-1).workSize++;
             	} else {
+					// 이전 배포 소요기간보다 더 오래 걸릴 경우, 다음 배포일자 추가
             		works.add(new Work(day.get(i), 1));
             	}
         	}
+			System.out.println(works.toString());
         }
         
         int[] answer = new int[works.size()];
@@ -70,11 +77,19 @@ public class StackQue_003 {
 }
 
 class Work {
-	int workDay;
-	int workSize;
+	int workDay; // 배포소요기간
+	int workSize; // 배포갯수
 	
 	public Work(int workDay, int workSize) {
 		this.workDay = workDay;
 		this.workSize = workSize;
+	}
+
+	@Override
+	public String toString() {
+		return "Work{" +
+				"workDay=" + workDay +
+				", workSize=" + workSize +
+				'}';
 	}
 }

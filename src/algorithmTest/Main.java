@@ -1,32 +1,45 @@
 package algorithmTest;
 
-import java.util.Scanner;
 
-public class Main {
+import programmers.heap.Heap_003_MultiQueue;
+import programmers.stackQue.StackQue_006;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        sc.close();
+import java.util.*;
 
-        for (int i=1;i<=n;i++) {
-            for (int j=1; j<=i; j++) {
-                System.out.print("*");
-            }
-            for (int j=1; j<=n-i; j++) {
-                System.out.print("  ");
-            }
-            for (int j=1; j<=i; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
+public class Main {;
 
-        for (int i=1; i<=n-1; i++) {
-            for (int j=1; j<=n-1; j++) {
-                System.out.print("*");
-            }
-        }
+    public static void main(String[] args){
+
+        System.out.println(Arrays.toString(Heap_003_MultiQueue.solution(new String[]{"I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"})));
+        System.out.println(Arrays.toString(Heap_003_MultiQueue.solution(new String[]{"I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"})));
     }
+/*
+    private static int[][] solution(int servers, boolean sticky, int[] requests) {
+        int[][] answer = new int[servers][servers];
+        int chk = 0;
+        int chk2 = 0;
 
+        Queue<Integer> queue = new LinkedList<>();
+        if (sticky) {
+            Arrays.sort(requests);
+        }
+        for (int request : requests) {
+            queue.add(request);
+        }
+
+        if (!sticky) {
+
+            while(!queue.isEmpty()) {
+                if (chk != servers) {
+                    answer[chk][chk2] = queue.poll();
+                } else {
+                    chk2++;
+                    chk = 0;
+                    answer[0][chk2] = queue.poll();
+                }
+                chk++;
+            }
+        }
+        return answer;
+    }*/
 }
